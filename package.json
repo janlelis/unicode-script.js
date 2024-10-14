@@ -1,0 +1,38 @@
+{
+  "name": "unicode-scripts",
+  "version": "1.0.0",
+  "description": "[Unicode 16.0.0] Retrieve the Unicode script(s) a string belongs to. Can also return the Script_Extension property which is defined as characters which are 'commonly used with more than one script, but with a limited number of scripts'.",
+  "type": "module",
+  "exports": {
+    "default": "./src/index.js"
+  },
+  "scripts": {
+    "test": "vitest",
+    "jsdoc": "jsdoc2md src/index.js > docs/unicode-scripts.md"
+  },
+  "sideEffects": false,
+  "engines": {
+    "node": ">=18.20"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/janlelis/unicode-number.js.git"
+  },
+  "keywords": [
+    "unicode",
+    "unicode-data",
+    "script",
+    "script-extensions",
+    "alphabet"
+  ],
+  "author": {
+    "name": "Jan Lelis",
+    "email": "hi@ruby.consulting"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "jsdoc-to-markdown": "^9.0.2",
+    "vitest": "^2.1.1"
+  },
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
+}
