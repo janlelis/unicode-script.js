@@ -77,7 +77,7 @@ unicodeScriptExtensions("॥")
 
 ### More Examples / JSDoc
 
-See [SPECS](/test/unicode-scripts.test.js) and [DOCS](/docs/unicode-scrips.md).
+See [SPECS](/test/unicode-scripts.test.js) and [DOCS](/docs/unicode-scripts.md).
 
 ### List of All Scripts
 
