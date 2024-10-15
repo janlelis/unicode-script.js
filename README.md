@@ -93,6 +93,12 @@ listUnicodeScriptCodes() // Set(172) { 'Adlm', 'Aghb', 'Ahom', …
 
 You can find a list of all scripts in Unicode, with links to Wikipedia on [character.construction/scripts](https://character.construction/scripts)
 
+## Also See
+
+- Get the Unicode blocks of a string: [unicode-block.js](https://github.com/janlelis/unicode-blocks.js)
+- Get the name of a character: [unicode-name.js](https://github.com/janlelis/unicode-name.js)
+- Index created with: [unicoder](https://github.com/janlelis/unicoder)
+
 ## MIT License
 
 - Copyright (C) 2024 Jan Lelis <https://janlelis.com>. Released under the MIT license.
