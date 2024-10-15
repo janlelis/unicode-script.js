@@ -1,6 +1,6 @@
 {
   "name": "unicode-scripts",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "[Unicode 16.0.0] Retrieve the Unicode script(s) a string belongs to. Can also return the Script_Extension property which is defined as characters which are 'commonly used with more than one script, but with a limited number of scripts'.",
   "type": "module",
   "exports": {
@@ -16,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/janlelis/unicode-number.js.git"
+    "url": "git+https://github.com/janlelis/unicode-scripts.js.git"
   },
   "keywords": [
     "unicode",
