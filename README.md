@@ -1,4 +1,4 @@
-# unicode-scripts.js [![[ci]](https://github.com/janlelis/unicode-scripts.js/workflows/Test/badge.svg)](https://github.com/janlelis/unicode-scripts.js/actions?query=workflow%3ATest)
+# unicode-script.js [![[ci]](https://github.com/janlelis/unicode-script.js/workflows/Test/badge.svg)](https://github.com/janlelis/unicode-script.js/actions?query=workflow%3ATest)
 
 Retrieve all [Unicode script(s)](https://en.wikipedia.org/wiki/Script_%28Unicode%29) used in a string.
 
@@ -11,17 +11,26 @@ Unicode version: **16.0.0** (September 2024)
 Use npm or your favorite package manager to install this module:
 
 ```sh
-npm install unicode-scripts
+npm install unicode-script
 ```
 
 Or use ESM module directly from the browser.
 
-## Usage - Scripts
+## Usage - Script
+
+### `unicodeScript(char)` / `unicodeScriptCode(char)`
+
+```js
+// Single character
+
+import { unicodeScript } from "unicode-script";
+unicodeScript("ᴦ") // "Greek"
+```
 
 ### `unicodeScripts(string)` / `unicodeScriptCodes(string)`
 
 ```js
-import { unicodeScripts, unicodeScriptCodes } from "unicode-scripts";
+import { unicodeScripts, unicodeScriptCodes } from "unicode-script";
 
 // Set of all scripts of a string
 unicodeScripts("СC") // Set(2) { 'Cyrillic', 'Latin' }
@@ -31,21 +40,12 @@ unicodeScripts("𐱐") // Set(1) { 'Unknown' }
 unicodeScriptCodes("СC") // Set(2) { 'Cyrl', 'Latn' }
 ```
 
-### `unicodeScript(char)` / `unicodeScriptCode(char)`
-
-```js
-// Single character
-
-import { unicodeScript } from "unicode-scripts";
-unicodeScript("ᴦ") // "Greek"
-```
-
 ## Usage - Script Extensions
 
 ### `unicodeScriptExtensions(string)` / `unicodeScriptExtensionCodes(string)`
 
 ```js
-import { unicodeScriptExtensions } from "unicode-scripts";
+import { unicodeScriptExtensions } from "unicode-script";
 unicodeScriptExtensions("॥")
 // Set(23) {
 //   'Bengali',
@@ -77,17 +77,17 @@ unicodeScriptExtensions("॥")
 
 ### More Examples / JSDoc
 
-See [SPECS](/test/unicode-scripts.test.js) and [DOCS](/docs/unicode-scripts.md).
+See [SPECS](/test/unicode-script.test.js) and [DOCS](/docs/unicode-script.md).
 
 ### List of All Scripts
 
 Script names and short names can be retrieved like this:
 
 ```js
-import { listUnicodeScripts } from "unicode-scripts"
+import { listUnicodeScripts } from "unicode-script"
 listUnicodeScripts() // Set(172) { 'Adlam', 'Ahom', 'Anatolian_Hieroglyphs', …
 
-import { listUnicodeScriptCodes } from "unicode-scripts"
+import { listUnicodeScriptCodes } from "unicode-script"
 listUnicodeScriptCodes() // Set(172) { 'Adlm', 'Aghb', 'Ahom', …
 ```
 
@@ -95,7 +95,7 @@ You can find a list of all scripts in Unicode, with links to Wikipedia on [chara
 
 ## Also See
 
-- Get the Unicode blocks of a string: [unicode-block.js](https://github.com/janlelis/unicode-blocks.js)
+- Get the Unicode blocks of a string: [unicode-block.js](https://github.com/janlelis/unicode-block.js)
 - Get the name of a character: [unicode-name.js](https://github.com/janlelis/unicode-name.js)
 - Index created with: [unicoder](https://github.com/janlelis/unicoder)
 

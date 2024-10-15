@@ -1,6 +1,6 @@
 {
-  "name": "unicode-scripts",
-  "version": "1.0.1",
+  "name": "unicode-script",
+  "version": "1.0.2",
   "description": "[Unicode 16.0.0] Retrieve the Unicode script(s) a string belongs to. Can also return the Script_Extension property which is defined as characters which are 'commonly used with more than one script, but with a limited number of scripts'.",
   "type": "module",
   "exports": {
@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "vitest",
-    "jsdoc": "jsdoc2md src/index.js > docs/unicode-scripts.md"
+    "jsdoc": "jsdoc2md src/index.js > docs/unicode-script.md"
   },
   "sideEffects": false,
   "engines": {
@@ -16,12 +16,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/janlelis/unicode-scripts.js.git"
+    "url": "git+https://github.com/janlelis/unicode-script.js.git"
   },
   "keywords": [
     "unicode",
     "unicode-data",
-    "script",
+    "scripts",
     "script-extensions",
     "alphabet"
   ],

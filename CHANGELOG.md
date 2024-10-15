@@ -1,5 +1,9 @@
 ## CHANGELOG
 
+### 1.0.2
+
+- Rename to unicode-script.js
+
 ### 1.0.1
 
 - Fix repository URL in package.json
