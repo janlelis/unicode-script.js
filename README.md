@@ -4,7 +4,7 @@ Retrieve all [Unicode script(s)](https://en.wikipedia.org/wiki/Script_%28Unicode
 
 Includes support for the _Script_Extension_ (scx) property which is defined as characters which are "commonly used with more than one script, but with a limited number of scripts".
 
-Based on the _Script_Extension_, this library can also return the [augmented script set](https://www.unicode.org/reports/tr39/#def-augmented-script-set) to figure out if a string is **mixed-script** or **single-script**.
+Based on the _Script_Extension_, this library can also return the [augmented script set](https://www.unicode.org/reports/tr39/#def-augmented-script-set) to figure out if a string is **mixed-script** or **single-script**. Mixed scripts can be an indicator of suspicious user inputs.
 
 Unicode version: **16.0.0** (September 2024)
 
