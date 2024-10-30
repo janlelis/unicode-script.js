@@ -23,7 +23,8 @@
     "unicode-data",
     "scripts",
     "script-extensions",
-    "alphabet"
+    "alphabet",
+    "mixed-script"
   ],
   "author": {
     "name": "Jan Lelis",

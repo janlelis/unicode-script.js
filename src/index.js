@@ -7,6 +7,15 @@ const SCRIPT_ALIASES_FLAT = Object.keys(SCRIPT_ALIASES).filter((s) => {
   return s[0] !== "Q";
 });
 
+const ALL_UNICODE_SCRIPTS = new Set([...SCRIPT_NAMES, "Unknown"].sort());
+const ALL_UNICODE_SCRIPT_CODES = new Set(
+  [...SCRIPT_ALIASES_FLAT, "Zzzz"].sort()
+);
+const AUGMENTED_SCRIPT_CODES = new Set(["Hanb", "Jpan", "Kore"]);
+const ALL_SCRIPT_CODES = new Set(
+  [...ALL_UNICODE_SCRIPT_CODES, ...AUGMENTED_SCRIPT_CODES].sort()
+);
+
 /**
  * Use codepoints instead of characters if preferred
  * @private
@@ -16,6 +25,18 @@ function codepointToChar(codepoinOrNot) {
     return String.fromCodePoint(codepoinOrNot);
   } else {
     return codepoinOrNot;
+  }
+}
+
+/**
+ * Use codepoints instead of characters if preferred
+ * @private
+ */
+function setIntersection(setA, setB) {
+  if (typeof setA.intersection === "function") {
+    return setA.intersection(setB);
+  } else {
+    return new Set([...setA].filter((v) => setB.has(v)));
   }
 }
 
@@ -158,12 +179,80 @@ export function unicodeScriptExtensionCodes(string) {
 }
 
 /**
+ * Returns the augmented script set as described in
+ * https://www.unicode.org/reports/tr39/#def-augmented-script-set
+ *
+ * @param {string} string Input string (single char)
+ * @returns {Set} Set of script extensions + augmented scripts (ISO 15924)
+ */
+export function unicodeAugmentedScriptCodes(string) {
+  let augmented = unicodeScriptExtensionCodes(string);
+  if (augmented.has("Hani")) {
+    augmented.add("Hanb");
+    augmented.add("Jpan");
+    augmented.add("Kore");
+  }
+  if (augmented.has("Hira")) {
+    augmented.add("Jpan");
+  }
+  if (augmented.has("Kana")) {
+    augmented.add("Jpan");
+  }
+  if (augmented.has("Hang")) {
+    augmented.add("Kore");
+  }
+  if (augmented.has("Bopo")) {
+    augmented.add("Hanb");
+  }
+  if (augmented.has("Zyyy") || augmented.has("Zinh")) {
+    augmented = new Set(ALL_SCRIPT_CODES);
+  }
+
+  return augmented;
+}
+
+/**
+ * Returns the resolved script set as described in
+ * https://www.unicode.org/reports/tr39/#def-resolved-script-set
+ *
+ * @param {string} string Input string
+ * @returns {Set} Set of resolved scripts (ISO 15924)
+ */
+export function unicodeResolvedScriptCodes(string) {
+  return [...string].reduce((acc, char) => {
+    return setIntersection(acc, unicodeAugmentedScriptCodes(char));
+  }, ALL_SCRIPT_CODES);
+}
+
+/**
+ * Returns the mixed-script status of a string as per
+ * https://www.unicode.org/reports/tr39/#def-mixed-script
+ *
+ * @param {string} string Input string
+ * @returns {boolean} true if mixed-script, false if single-script
+ */
+export function isMixedScript(string) {
+  return unicodeResolvedScriptCodes(string).size === 0;
+}
+
+/**
+ * Returns the single-script status of a string as per
+ * https://www.unicode.org/reports/tr39/#def-single-script
+ *
+ * @param {string} string Input string
+ * @returns {boolean} false if mixed-script, true if single-script
+ */
+export function isSingleScript(string) {
+  return unicodeResolvedScriptCodes(string).size !== 0;
+}
+
+/**
  * Lists all known Unicode scripts
  *
  * @returns {Set} All script names
  */
 export function listUnicodeScripts() {
-  return new Set([...SCRIPT_NAMES, "Unknown"].sort());
+  return new Set(ALL_UNICODE_SCRIPTS);
 }
 
 /**
@@ -172,5 +261,14 @@ export function listUnicodeScripts() {
  * @returns {Set} All script names (ISO 15924)
  */
 export function listUnicodeScriptCodes() {
-  return new Set([...SCRIPT_ALIASES_FLAT, "Zzzz"].sort());
+  return new Set(ALL_UNICODE_SCRIPT_CODES);
+}
+
+/**
+ * Lists augmented scripts (ISO 15924)
+ *
+ * @returns {Set} Augmented scripts as described in UAX24
+ */
+export function listUnicodeAugmentedScriptCodes() {
+  return new Set(AUGMENTED_SCRIPT_CODES);
 }

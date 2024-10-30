@@ -1,5 +1,9 @@
 ## CHANGELOG
 
+### 1.1.0 (unreleased)
+
+- Add augmented scripts and mixed-script detection (as described in UTS39)
+
 ### 1.0.2
 
 - Rename to unicode-script.js

@@ -6,8 +6,13 @@ import {
   unicodeScriptCode,
   unicodeScriptExtensions,
   unicodeScriptExtensionCodes,
+  unicodeAugmentedScriptCodes,
+  unicodeResolvedScriptCodes,
+  isMixedScript,
+  isSingleScript,
   listUnicodeScripts,
   listUnicodeScriptCodes,
+  listUnicodeAugmentedScriptCodes,
 } from "../src/index.js";
 
 describe("unicodeScripts(string)", () => {
@@ -62,9 +67,17 @@ describe("listUnicodeScripts()", () => {
 });
 
 describe("listUnicodeScriptCodes()", () => {
-  it("will return a list of all script names", () => {
+  it("will return a list of all script codes", () => {
     expect(listUnicodeScriptCodes()).toContain("Egyp");
     expect(listUnicodeScriptCodes()).toContain("Zzzz");
+  });
+});
+
+describe("listUnicodeAugmentedScriptCodes()", () => {
+  it("will return a list of all augmented script codes", () => {
+    expect(listUnicodeAugmentedScriptCodes()).toEqual(
+      new Set(["Hanb", "Jpan", "Kore"])
+    );
   });
 });
 
@@ -104,7 +117,7 @@ describe("unicodeScriptExtensions(string)", () => {
   });
 });
 
-describe("unicodeScriptExtensions(string)", () => {
+describe("unicodeScriptExtensionCodes(string)", () => {
   it("will return all extended scripts that characters in the string belong to", () => {
     expect(unicodeScriptExtensionCodes("॥")).toEqual(
       new Set([
@@ -133,5 +146,57 @@ describe("unicodeScriptExtensions(string)", () => {
         "Tirh",
       ])
     );
+  });
+});
+
+describe("unicodeAugmentedScriptCodes(string)", () => {
+  it("will return all extended scripts that characters in the string belong to + augmented", () => {
+    expect(unicodeAugmentedScriptCodes("ねガ")).toEqual(
+      new Set(["Hira", "Kana", "Jpan"])
+    );
+  });
+
+  it("will replace Common with all scripts", () => {
+    expect(unicodeAugmentedScriptCodes("1")).toEqual(
+      new Set([
+        ...listUnicodeScriptCodes(),
+        ...listUnicodeAugmentedScriptCodes(),
+      ])
+    );
+  });
+});
+
+describe("unicodeResolvedScriptCodes(string)", () => {
+  it("return intersection of augmented scripts per character", () => {
+    expect(unicodeResolvedScriptCodes("СігсӀе")).toEqual(new Set(["Cyrl"]));
+
+    expect(unicodeResolvedScriptCodes("Сirсlе")).toEqual(new Set());
+
+    expect(unicodeResolvedScriptCodes("𝖢𝗂𝗋𝖼𝗅𝖾")).toEqual(
+      new Set([
+        ...listUnicodeScriptCodes(),
+        ...listUnicodeAugmentedScriptCodes(),
+      ])
+    );
+  });
+});
+
+describe("isMixedScript(string)", () => {
+  it("return true if unicodeResolvedScriptCodes(string) is empty", () => {
+    expect(isMixedScript("СігсӀе")).toEqual(false)
+    expect(isMixedScript("Сirсlе")).toEqual(true)
+    expect(isMixedScript("𝖢𝗂𝗋𝖼𝗅𝖾")).toEqual(false)
+    expect(isMixedScript("1")).toEqual(false)
+    expect(isMixedScript("ねガ")).toEqual(false)
+  });
+});
+
+describe("isSingleScript(string)", () => {
+  it("return true if unicodeResolvedScriptCodes(string) is not empty", () => {
+    expect(isSingleScript("СігсӀе")).toEqual(true)
+    expect(isSingleScript("Сirсlе")).toEqual(false)
+    expect(isSingleScript("𝖢𝗂𝗋𝖼𝗅𝖾")).toEqual(true)
+    expect(isSingleScript("1")).toEqual(true)
+    expect(isSingleScript("ねガ")).toEqual(true)
   });
 });
