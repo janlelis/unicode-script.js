@@ -159,7 +159,7 @@ See [SPECS](/test/unicode-script.test.js) and [DOCS](/docs/unicode-script.md).
 ## Unicode Standards
 
 - [UAX24](https://www.unicode.org/reports/tr24/)
-- [UTS39](https://www.unicode.org/reports/tr39/#Detection_Mechanisms)
+- [UTS39](https://www.unicode.org/reports/tr39/#Detection_Mechanisms) - Mixed-Script Detection
 
 ## Also See
 
