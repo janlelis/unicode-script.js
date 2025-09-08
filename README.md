@@ -6,7 +6,7 @@ Includes support for the _Script_Extension_ (scx) property which is defined as c
 
 Based on the _Script_Extension_, this library can also return the [augmented script set](https://www.unicode.org/reports/tr39/#def-augmented-script-set) to figure out if a string is **mixed-script** or **single-script**. Mixed scripts can be an indicator of suspicious user inputs.
 
-Unicode version: **16.0.0** (September 2024)
+Unicode version: **17.0.0** (September 2025)
 
 ## Install
 
@@ -141,10 +141,10 @@ Script names and short names can be retrieved like this:
 
 ```js
 import { listUnicodeScripts } from "unicode-script";
-listUnicodeScripts(); // Set(172) { 'Adlam', 'Ahom', 'Anatolian_Hieroglyphs', …
+listUnicodeScripts(); // Set(176) { 'Adlam', 'Ahom', 'Anatolian_Hieroglyphs', …
 
 import { listUnicodeScriptCodes } from "unicode-script";
-listUnicodeScriptCodes(); // Set(172) { 'Adlm', 'Aghb', 'Ahom', …
+listUnicodeScriptCodes(); // Set(176) { 'Adlm', 'Aghb', 'Ahom', …
 
 import { listUnicodeAugmentedScriptCodes } from "unicode-script";
 listUnicodeAugmentedScriptCodes(); // Set(3) { 'Hanb', 'Jpan', 'Kore' }
@@ -170,5 +170,5 @@ See [SPECS](/test/unicode-script.test.js) and [DOCS](/docs/unicode-script.md).
 
 ## MIT License
 
-- Copyright (C) 2024 Jan Lelis <https://janlelis.com>. Released under the MIT license.
+- Copyright (C) 2024-2025 Jan Lelis <https://janlelis.com>. Released under the MIT license.
 - Unicode data: https://www.unicode.org/copyright.html#Exhibit1
