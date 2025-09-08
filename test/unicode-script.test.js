@@ -45,6 +45,12 @@ describe("unicodeScript(char)", () => {
     expect(unicodeScript("")).toBe(undefined);
     expect(unicodeScript("ab")).toBe(undefined);
   });
+
+  describe("[unicode versions]", () => {
+    it("works for scripts introduced in Unicode 17", () => {
+      expect(unicodeScript("𞛀")).toEqual("Tai_Yo");
+    });
+  })
 });
 
 describe("unicodeScriptCodes(string)", () => {
