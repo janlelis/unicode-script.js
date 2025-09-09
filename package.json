@@ -1,7 +1,7 @@
 {
   "name": "unicode-script",
-  "version": "1.1.0",
-  "description": "[Unicode 16.0.0] Retrieve the Unicode script(s) a string belongs to. Can also return the Script_Extension property which is defined as characters which are 'commonly used with more than one script, but with a limited number of scripts'.",
+  "version": "1.2.0",
+  "description": "[Unicode 17.0.0] Retrieve the Unicode script(s) a string belongs to. Can also return the Script_Extension property which is defined as characters which are 'commonly used with more than one script, but with a limited number of scripts'.",
   "type": "module",
   "exports": {
     "default": "./src/index.js"
