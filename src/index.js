@@ -11,7 +11,7 @@ const ALL_UNICODE_SCRIPTS = new Set([...SCRIPT_NAMES, "Unknown"].sort());
 const ALL_UNICODE_SCRIPT_CODES = new Set(
   [...SCRIPT_ALIASES_FLAT, "Zzzz"].sort()
 );
-const AUGMENTED_SCRIPT_CODES = new Set(["Hanb", "Jpan", "Kore"]);
+const AUGMENTED_SCRIPT_CODES = new Set(["Hanb", "Hntl", "Jpan", "Kore"]);
 const ALL_SCRIPT_CODES = new Set(
   [...ALL_UNICODE_SCRIPT_CODES, ...AUGMENTED_SCRIPT_CODES].sort()
 );
@@ -189,6 +189,7 @@ export function unicodeAugmentedScriptCodes(string) {
   let augmented = unicodeScriptExtensionCodes(string);
   if (augmented.has("Hani")) {
     augmented.add("Hanb");
+    augmented.add("Hntl");
     augmented.add("Jpan");
     augmented.add("Kore");
   }
@@ -203,6 +204,9 @@ export function unicodeAugmentedScriptCodes(string) {
   }
   if (augmented.has("Bopo")) {
     augmented.add("Hanb");
+  }
+  if (augmented.has("Latn")) {
+    augmented.add("Hntl");
   }
   if (augmented.has("Zyyy") || augmented.has("Zinh")) {
     augmented = new Set(ALL_SCRIPT_CODES);

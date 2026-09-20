@@ -6,7 +6,7 @@ Includes support for the _Script_Extension_ (scx) property which is defined as c
 
 Based on the _Script_Extension_, this library can also return the [augmented script set](https://www.unicode.org/reports/tr39/#def-augmented-script-set) to figure out if a string is **mixed-script** or **single-script**. Mixed scripts can be an indicator of suspicious user inputs.
 
-Unicode version: **17.0.0** (September 2025)
+Unicode version: **18.0.0** (September 2026)
 
 ## Install
 
@@ -170,5 +170,5 @@ See [SPECS](/test/unicode-script.test.js) and [DOCS](/docs/unicode-script.md).
 
 ## MIT License
 
-- Copyright (C) 2024-2025 Jan Lelis <https://janlelis.com>. Released under the MIT license.
+- Copyright (C) 2024-2026 Jan Lelis <https://janlelis.com>. Released under the MIT license.
 - Unicode data: https://www.unicode.org/copyright.html#Exhibit1

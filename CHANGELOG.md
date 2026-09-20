@@ -1,5 +1,10 @@
 ## CHANGELOG
 
+### 1.3.0 (unreleased)
+
+- Unicode 18
+- Adapt augmented script set (and therefor mixed/single script detection) to Unicode 18 (-> add Hntl)
+
 ### 1.2.0
 
 - Unicode 17

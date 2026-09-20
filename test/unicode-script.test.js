@@ -47,6 +47,10 @@ describe("unicodeScript(char)", () => {
   });
 
   describe("[unicode versions]", () => {
+    it("works for scripts introduced in Unicode 18", () => {
+      expect(unicodeScript("𘸠")).toEqual("Jurchen");
+    });
+
     it("works for scripts introduced in Unicode 17", () => {
       expect(unicodeScript("𞛀")).toEqual("Tai_Yo");
     });
@@ -82,7 +86,7 @@ describe("listUnicodeScriptCodes()", () => {
 describe("listUnicodeAugmentedScriptCodes()", () => {
   it("will return a list of all augmented script codes", () => {
     expect(listUnicodeAugmentedScriptCodes()).toEqual(
-      new Set(["Hanb", "Jpan", "Kore"])
+      new Set(["Hanb", "Hntl", "Jpan", "Kore"])
     );
   });
 });
@@ -159,6 +163,18 @@ describe("unicodeAugmentedScriptCodes(string)", () => {
   it("will return all extended scripts that characters in the string belong to + augmented", () => {
     expect(unicodeAugmentedScriptCodes("ねガ")).toEqual(
       new Set(["Hira", "Kana", "Jpan"])
+    );
+  });
+
+  it("will add all extra augmented script codes for Han characters", () => {
+    expect(unicodeAugmentedScriptCodes("⺀")).toEqual(
+      new Set(["Hanb", "Hani", "Hntl", "Jpan", "Kore"])
+    );
+  });
+
+  it("will add Hntl for Latin characters", () => {
+    expect(unicodeAugmentedScriptCodes("A")).toEqual(
+      new Set(["Hntl", "Latn"])
     );
   });
 
